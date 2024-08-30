@@ -1,5 +1,9 @@
 import { Box, Typography } from "@mui/material"
-import { TonConnectButton, useTonConnectUI, useTonWallet } from "@tonconnect/ui-react"
+import {
+  TonConnectButton,
+  useTonConnectUI,
+  useTonWallet,
+} from "@tonconnect/ui-react"
 import background from "../../assets/images/home_bg.png"
 import MenuButton from "../../components/MenuButton"
 
@@ -12,7 +16,6 @@ const Home = () => {
   return (
     <Box
       sx={{
-        // bgcolor: "black",
         width: "100%",
         height: "100vh",
         display: "flex",
@@ -38,11 +41,7 @@ const Home = () => {
           onClick={() => console.log("Play")}
           title="Choose Character"
         />
-        {wallet ? (
-          <Typography color="white">Your wallet is connected</Typography>
-        ) : (
-          <TonConnectButton />
-        )}
+        {wallet ? "" : <TonConnectButton />}
         {wallet ? (
           <MenuButton
             title="Disconnect wallet"
