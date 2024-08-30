@@ -3,7 +3,7 @@ import Home from "./pages/Home/Index"
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
