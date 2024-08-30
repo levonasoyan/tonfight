@@ -2,6 +2,7 @@ import { Button } from "@mui/material"
 
 type Props = {
   title: string
+  onClick?: () => void
 }
 
 const handDrawnButtonStyles = {

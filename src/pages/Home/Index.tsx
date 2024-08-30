@@ -37,6 +37,12 @@ const Home = () => {
         <MenuButton title="Invite Friend" />
         <MenuButton title="Choose Character" />
         {wallet ? "Your wallet is connected" : <TonConnectButton />}
+        {wallet ? (
+          <MenuButton
+            title="Disconnect wallet"
+            onClick={async () => await tonConnectUI.disconnect()}
+          />
+        ) : null}
       </Box>
     </Box>
   )
