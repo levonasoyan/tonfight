@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/tonfight/static/css/main.c7ec3132.css",
-    "main.js": "/tonfight/static/js/main.f8b3ec9d.js",
+    "main.js": "/tonfight/static/js/main.7607cddc.js",
     "static/media/home_bg.png": "/tonfight/static/media/home_bg.99c2a0982f1d9c512a3d.png",
     "index.html": "/tonfight/index.html",
     "main.c7ec3132.css.map": "/tonfight/static/css/main.c7ec3132.css.map",
-    "main.f8b3ec9d.js.map": "/tonfight/static/js/main.f8b3ec9d.js.map"
+    "main.7607cddc.js.map": "/tonfight/static/js/main.7607cddc.js.map"
   },
   "entrypoints": [
     "static/css/main.c7ec3132.css",
-    "static/js/main.f8b3ec9d.js"
+    "static/js/main.7607cddc.js"
   ]
 }
