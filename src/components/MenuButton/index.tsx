@@ -2,7 +2,7 @@ import { Button } from "@mui/material"
 
 type Props = {
   title: string
-  onClick?: () => void
+  onClick: () => void
 }
 
 const handDrawnButtonStyles = {
@@ -22,8 +22,13 @@ const handDrawnButtonStyles = {
     transform: "translate(-2px, -2px)",
   },
 }
-const MenuButton = ({ title }: Props) => {
-  return <Button sx={handDrawnButtonStyles}>{title}</Button>
+
+const MenuButton = ({ title, onClick }: Props) => {
+  return (
+    <Button sx={handDrawnButtonStyles} onClick={onClick}>
+      {title}
+    </Button>
+  )
 }
 
 export default MenuButton

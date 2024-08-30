@@ -1,8 +1,7 @@
-import { Box } from "@mui/material"
-import MenuButton from "../../components/MenuButton"
+import { Box, Typography } from "@mui/material"
+import { TonConnectButton, useTonConnectUI, useTonWallet } from "@tonconnect/ui-react"
 import background from "../../assets/images/home_bg.png"
-import { TonConnectButton, useTonWallet } from "@tonconnect/ui-react"
-import { useTonConnectUI } from "@tonconnect/ui-react"
+import MenuButton from "../../components/MenuButton"
 
 const Home = () => {
   const [tonConnectUI] = useTonConnectUI()
@@ -33,11 +32,14 @@ const Home = () => {
           alignItems: "center",
         }}
       >
-        <MenuButton title="Play" />
-        <MenuButton title="Invite Friend" />
-        <MenuButton title="Choose Character" />
+        <MenuButton onClick={() => console.log("Play")} title="Play" />
+        <MenuButton onClick={() => console.log("Play")} title="Invite Friend" />
+        <MenuButton
+          onClick={() => console.log("Play")}
+          title="Choose Character"
+        />
         {wallet ? (
-          <p color="white">Your wallet is connected</p>
+          <Typography color="white">Your wallet is connected</Typography>
         ) : (
           <TonConnectButton />
         )}
