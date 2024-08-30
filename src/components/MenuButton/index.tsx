@@ -6,6 +6,7 @@ type Props = {
 
 const handDrawnButtonStyles = {
   backgroundColor: "white",
+  width: "100%",
   color: "black",
   border: "2px solid black",
   padding: "10px 20px",

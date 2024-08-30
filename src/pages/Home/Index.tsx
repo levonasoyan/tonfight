@@ -1,7 +1,15 @@
 import { Box } from "@mui/material"
 import MenuButton from "../../components/MenuButton"
 import background from "../../assets/images/home_bg.png"
+import { TonConnectButton, useTonWallet } from "@tonconnect/ui-react"
+import { useTonConnectUI } from "@tonconnect/ui-react"
+
 const Home = () => {
+  const [tonConnectUI] = useTonConnectUI()
+  const wallet = useTonWallet()
+
+  console.log(wallet, 111)
+
   return (
     <Box
       sx={{
@@ -16,10 +24,19 @@ const Home = () => {
         backgroundSize: "cover",
       }}
     >
-      <Box sx={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "12px",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <MenuButton title="Play" />
         <MenuButton title="Invite Friend" />
         <MenuButton title="Choose Character" />
+        {wallet ? "Your wallet is connected" : <TonConnectButton />}
       </Box>
     </Box>
   )
