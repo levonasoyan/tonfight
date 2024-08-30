@@ -36,7 +36,11 @@ const Home = () => {
         <MenuButton title="Play" />
         <MenuButton title="Invite Friend" />
         <MenuButton title="Choose Character" />
-        {wallet ? "Your wallet is connected" : <TonConnectButton />}
+        {wallet ? (
+          <p color="white">Your wallet is connected</p>
+        ) : (
+          <TonConnectButton />
+        )}
         {wallet ? (
           <MenuButton
             title="Disconnect wallet"
