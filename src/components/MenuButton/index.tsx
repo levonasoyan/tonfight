@@ -11,7 +11,6 @@ const handDrawnButtonStyles = {
   color: "black",
   border: "2px solid black",
   padding: "10px 20px",
-  fontFamily: '"Comic Sans MS", "Comic Sans", cursive',
   fontSize: "16px",
   borderRadius: "8px",
   boxShadow: "3px 3px 0px black",

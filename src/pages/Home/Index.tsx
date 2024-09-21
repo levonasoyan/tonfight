@@ -5,11 +5,11 @@ import {
   useTonConnectUI,
   useTonWallet,
 } from "@tonconnect/ui-react"
-import background from "../../assets/images/home_bg.png"
-import MenuButton from "../../components/MenuButton"
-import ConnectWalletModal from "../../components/ConnectWalletModal"
-import ChooseBetAmountModal from "../../components/ChooseBetAmountModal"
 import { useState } from "react"
+import background from "../../assets/images/home.webp"
+import ChooseBetAmountModal from "../../components/ChooseBetAmountModal"
+import ConnectWalletModal from "../../components/ConnectWalletModal"
+import MenuButton from "../../components/MenuButton"
 
 const Home = () => {
   const [tonConnectUI] = useTonConnectUI()
@@ -35,6 +35,8 @@ const Home = () => {
           backgroundImage: `url(${background})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          overflow: "hidden",
         }}
       >
         <Box
@@ -65,6 +67,7 @@ const Home = () => {
             title="Choose Character"
           />
           {wallet ? "" : <TonConnectButton />}
+          {/* For testing purposes */}
           {wallet ? (
             <MenuButton
               title="Disconnect wallet"

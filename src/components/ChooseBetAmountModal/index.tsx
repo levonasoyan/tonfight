@@ -1,5 +1,13 @@
-import { Box, Input, Modal, Typography } from "@mui/material"
-import BetAmountButton from "../BetAmountButtons"
+import {
+  Box,
+  Button,
+  Input,
+  Modal,
+  ToggleButtonGroup,
+  Typography,
+} from "@mui/material"
+import { useState } from "react"
+import PrimaryButton from "../PrimaryButton"
 
 type Props = {
   isOpen: boolean
@@ -14,15 +22,28 @@ const style = {
   width: "80%",
   height: 450,
   bgcolor: "black",
-  color: "white",
-  border: "2px solid #000",
+  color: "black",
+  borderRadius: "10px",
+  backgroundColor: "white",
   boxShadow: 24,
   display: "flex",
   flexDirection: "column" as "column",
   alignItems: "center",
+
   p: 4,
 }
 const ChooseBetAmountModal = ({ isOpen, setOpen }: Props) => {
+  const [value, setValue] = useState(10)
+
+  const handleChange = (
+    event: React.MouseEvent<HTMLElement>,
+    value: number
+  ) => {
+    setValue(value)
+  }
+
+  console.log(value, 111)
+
   return (
     <Modal
       open={isOpen}
@@ -48,8 +69,8 @@ const ChooseBetAmountModal = ({ isOpen, setOpen }: Props) => {
               border: "1px solid #484850",
               borderRadius: "5px 5px 0 0",
             },
-            border: "1px solid white",
-            color: "white",
+            border: "1px solid black",
+            color: "black",
             borderRadius: "10px",
             width: "60%",
           }}
@@ -62,9 +83,21 @@ const ChooseBetAmountModal = ({ isOpen, setOpen }: Props) => {
             mt: "30px",
           }}
         >
-          {[10, 20, 30, 40].map((amount) => {
-            return <BetAmountButton amount={amount} />
-          })}
+          <ToggleButtonGroup
+            size="medium"
+            value={value}
+            onChange={handleChange}
+          >
+            <Button value={10} key={10} sx={{ color: "black" }}>
+              10
+            </Button>
+            <Button value={20} key={20} sx={{ color: "black" }}>
+              20
+            </Button>
+          </ToggleButtonGroup>
+        </Box>
+        <Box mt="30px">
+          <PrimaryButton text="Play" onClick={() => console.log(value)} />
         </Box>
       </Box>
     </Modal>
