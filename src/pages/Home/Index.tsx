@@ -1,22 +1,22 @@
-import { Box, Typography } from "@mui/material"
+import { Box, Button, Typography } from "@mui/material"
 import {
   TonConnectButton,
   useTonAddress,
   useTonConnectUI,
   useTonWallet,
 } from "@tonconnect/ui-react"
-import { useState } from "react"
+import { useCallback, useState } from "react"
 import background from "../../assets/images/home.webp"
-import ChooseBetAmountModal from "../../components/ChooseBetAmountModal"
 import ConnectWalletModal from "../../components/ConnectWalletModal"
-import MenuButton from "../../components/MenuButton"
+import Drawer from "react-bottom-drawer"
+import ChooseBetAmountDrawer from "../../components/ChooseBetAmountDrawer"
 
 const Home = () => {
-  const [tonConnectUI] = useTonConnectUI()
   const userFriendlyAddress = useTonAddress()
-  const [chooseBetAmountModalOpen, setChooseBetAmountModalOpen] =
-    useState(false)
-
+  const [isVisible, setIsVisible] = useState(false)
+  const onClose = useCallback(() => {
+    setIsVisible(false)
+  }, [])
   const wallet = useTonWallet()
 
   if (!wallet) {
@@ -54,32 +54,20 @@ const Home = () => {
             </Typography>
           )}
 
-          <MenuButton
-            onClick={() => setChooseBetAmountModalOpen(true)}
-            title="Fight"
-          />
-          <MenuButton
-            onClick={() => setChooseBetAmountModalOpen(true)}
-            title="Invite Friend"
-          />
-          <MenuButton
-            onClick={() => console.log("Play")}
-            title="Choose Character"
-          />
+          <Button onClick={() => setIsVisible(true)}>Fight</Button>
+          <Button onClick={() => setIsVisible(true)}>Invite friend</Button>
+          <Button onClick={() => setIsVisible(true)}>Choose Character</Button>
           {wallet ? "" : <TonConnectButton />}
           {/* For testing purposes */}
-          {wallet ? (
+          {/* {wallet ? (
             <MenuButton
               title="Disconnect wallet"
               onClick={async () => await tonConnectUI.disconnect()}
             />
-          ) : null}
+          ) : null} */}
         </Box>
       </Box>
-      <ChooseBetAmountModal
-        isOpen={chooseBetAmountModalOpen}
-        setOpen={setChooseBetAmountModalOpen}
-      />
+      <ChooseBetAmountDrawer isVisible={isVisible} onClose={onClose} />
     </>
   )
 }

@@ -2,37 +2,36 @@ import {
   Box,
   Button,
   Input,
-  Modal,
   ToggleButtonGroup,
   Typography,
 } from "@mui/material"
 import { useState } from "react"
-import PrimaryButton from "../PrimaryButton"
+import Drawer from "react-bottom-drawer"
+
+// const style = {
+//   position: "absolute" as "absolute",
+//   top: "50%",
+//   left: "50%",
+//   transform: "translate(-50%, -50%)",
+//   width: "80%",
+//   height: 450,
+//   bgcolor: "black",
+//   color: "black",
+//   borderRadius: "10px",
+//   backgroundColor: "white",
+//   boxShadow: 24,
+//   display: "flex",
+//   flexDirection: "column" as "column",
+//   alignItems: "center",
+
+//   p: 4,
+// }
 
 type Props = {
-  isOpen: boolean
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>
+  isVisible: boolean
+  onClose: () => void
 }
-
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: "80%",
-  height: 450,
-  bgcolor: "black",
-  color: "black",
-  borderRadius: "10px",
-  backgroundColor: "white",
-  boxShadow: 24,
-  display: "flex",
-  flexDirection: "column" as "column",
-  alignItems: "center",
-
-  p: 4,
-}
-const ChooseBetAmountModal = ({ isOpen, setOpen }: Props) => {
+const ChooseBetAmountDrawer = ({ isVisible, onClose }: Props) => {
   const [value, setValue] = useState(10)
 
   const handleChange = (
@@ -43,16 +42,9 @@ const ChooseBetAmountModal = ({ isOpen, setOpen }: Props) => {
   }
 
   console.log(value, 111)
-
   return (
-    <Modal
-      open={isOpen}
-      sx={{ zIndex: 9999 }}
-      onClose={() => setOpen(false)}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-    >
-      <Box sx={style}>
+    <Drawer isVisible={isVisible} onClose={onClose}>
+      <Box>
         <Typography
           id="modal-modal-title"
           variant="h6"
@@ -97,11 +89,11 @@ const ChooseBetAmountModal = ({ isOpen, setOpen }: Props) => {
           </ToggleButtonGroup>
         </Box>
         <Box mt="30px">
-          <PrimaryButton text="Play" onClick={() => console.log(value)} />
+          <Button onClick={() => console.log(value)}>Play</Button>
         </Box>
       </Box>
-    </Modal>
+    </Drawer>
   )
 }
 
-export default ChooseBetAmountModal
+export default ChooseBetAmountDrawer
